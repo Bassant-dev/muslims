@@ -2,11 +2,16 @@ import 'package:dio/dio.dart';
 
 
 class DioHelper {
-  static late Dio dio;
-  static Init_dio() {
-    dio = Dio(BaseOptions(
-      baseUrl: '',
+  static late Dio dio1;
+  static late Dio dio2;
+  static init1() {
+    dio1 = Dio(BaseOptions(
+      baseUrl: 'https://api.aladhan.com/v1/timings/',
       receiveDataWhenStatusError: true,
+    ));
+  }
+  static init2() {
+    dio2 = Dio(BaseOptions(baseUrl: 'http://api.alquran.cloud/v1/',
     ));
   }
 
@@ -17,12 +22,26 @@ class DioHelper {
         String? token
       }) async {
 
-    dio.options.headers = {
+    dio1.options.headers = {
       'Authorization': "Bearer $token",
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    return await dio.get(url, queryParameters: query);
+    return await dio1.get(url, queryParameters: query);
+  }
+  static Future<Response> getData2(
+      {
+        required String url,
+        Map<String, dynamic>? query,
+        String? token
+      }) async {
+
+    dio2.options.headers = {
+      'Authorization': "Bearer $token",
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+    return await dio2.get(url, queryParameters: query);
   }
   // Future<Response> getData({
   //   required String url,
@@ -70,12 +89,12 @@ class DioHelper {
         required Map<String, dynamic> data,
         String? token
       }) async {
-    dio.options.headers = {
+    dio1.options.headers = {
       'Authorization': "Bearer $token",
       // 'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    return await dio.post(url, queryParameters: query, data: data);
+    return await dio1.post(url, queryParameters: query, data: data);
   }
 
   static Future<Response> putData(
@@ -83,24 +102,24 @@ class DioHelper {
         Map<String, dynamic>? query,
         required Map<String, dynamic> data,
         String? token}) async {
-    dio.options.headers = {
+    dio1.options.headers = {
       'Authorization': token,
       // 'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    return await dio.put(url, queryParameters: query, data: data);
+    return await dio1.put(url, queryParameters: query, data: data);
   }
   static Future<Response> deleteData({
     required String url,
     Map<String, dynamic>? query,
     String? token,
   }) async {
-    dio.options.headers = {
+    dio1.options.headers = {
       'Authorization': 'Bearer $token',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    return dio.delete(url, queryParameters: query);
+    return dio1.delete(url, queryParameters: query);
 
   }
 

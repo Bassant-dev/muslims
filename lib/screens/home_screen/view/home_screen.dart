@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,8 @@ class HomeScreen extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeStates>(
       listener: (context, state) async {
       },
-      builder: (context, state) {
+      builder: (context, state)
+      {
         return Scaffold();
       },
     );

@@ -18,14 +18,14 @@ class NamesOfAllahScreen extends StatelessWidget {
           if (snapshot.hasError) {
             return Center(
                 child: Text('Error: ${snapshot.error}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     )));
           } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
                 child: Text('No data available.',
                     style: TextStyle(
                       color: Colors.black,

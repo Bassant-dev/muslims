@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:muslims/screens/home_screen/view_model/cubit/states.dart';
+import 'package:muslims/screens/quran/views/quran%20view.dart';
 
 import '../../../names_of_allah/view/names_of-allah_screen.dart';
 import '../../../qibla_screen/view/qibla_screen.dart';
+import '../../../salah_time/views/mawakit _salah.dart';
 import '../../view/home_screen.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
@@ -57,8 +59,8 @@ class HomeCubit extends Cubit<HomeStates> {
     currentIndex = index;
     emit(NewsBottomNavState());
   }
-  final homeScreen =HomeScreen();
-  final booksScreen = HomeScreen();
+  final homeScreen =const SalahTimeView();
+  final quranScreen = const QuranView();
   final favouriteScreen = HomeScreen();
   final namesOfAllah =  NamesOfAllahScreen();
   final qibla = qiblaScreen();
@@ -69,7 +71,7 @@ class HomeCubit extends Cubit<HomeStates> {
       case 0:
         return homeScreen;
       case 1:
-        return booksScreen;
+        return quranScreen;
       case 2:
         return favouriteScreen;
       case 3:

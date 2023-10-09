@@ -18,7 +18,7 @@ class startScreen extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: HexColor("#6A9C89"),
-            title: Center(
+            title: const Center(
               child: Text(
                 'رفيق المسلم',
                 style: TextStyle(
