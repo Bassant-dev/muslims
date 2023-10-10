@@ -4,7 +4,7 @@ import 'package:smooth_compass/utils/src/compass_ui.dart';
 
 class qiblaScreen extends StatelessWidget {
   const qiblaScreen({Key? key}) : super(key: key);
-
+//
   @override
   Widget build(BuildContext context) {
     return SmoothCompass(
