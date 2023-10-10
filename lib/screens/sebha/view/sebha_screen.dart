@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week4/core/appcolors.dart';
-import 'package:week4/screens/sebha/view_model/sebha_cubit.dart';
+
+import '../../../core/appcolors.dart';
+import '../view_model/sebha_cubit.dart';
 
 class SebhaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider(create: (context)=> SebhaCubit()..loadData());
     return Scaffold(
-      backgroundColor: primarycolor,
+      backgroundColor: AppColors.primarycolor,
       appBar: AppBar(
-        backgroundColor: mainColor,
+        backgroundColor: AppColors.mainColor,
         title: Text(
           "المسبحة الاكترونية",
           style: TextStyle(
@@ -82,7 +83,7 @@ class SebhaScreen extends StatelessWidget {
                       Container(
                         width: 500,
                         height: 100,
-                        color: primarycolor,
+                        color: AppColors.primarycolor,
                         child: ListView.builder(
                           itemCount: SebhaCubit.get(context).zekrcolor.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -124,7 +125,7 @@ class SebhaScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
                     child: CircleAvatar(
                       radius: 30,
-                      backgroundColor: mainColor,
+                      backgroundColor: AppColors.mainColor,
                       child: Icon(
                         Icons.restore_rounded,
                         size: 40,
@@ -154,7 +155,7 @@ class SebhaScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0, left: 8.0),
                     child: CircleAvatar(
                       radius: 30,
-                      backgroundColor: mainColor,
+                      backgroundColor: AppColors.mainColor,
                       child: Icon(
                         Icons.restart_alt_rounded,
                         size: 40,

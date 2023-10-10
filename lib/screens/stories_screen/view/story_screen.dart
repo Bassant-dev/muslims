@@ -3,10 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:muslims/screens/stories_screen/view/progress_bar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:week4/screens/stories_screen/view/progress_bar.dart';
-import 'package:week4/screens/stories_screen/view/stories_screen.dart';
 
 import '../../../core/SharedFunctions.dart';
 import '../../../core/appcolors.dart';
@@ -63,7 +62,7 @@ class StoryScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 10.0, left: 10.0),
                     child: CircleAvatar(
                       radius: 30,
-                      backgroundColor: primarycolor,
+                      backgroundColor: AppColors.primarycolor,
                       child: Icon(
                         Icons.share,
                         size: 40,

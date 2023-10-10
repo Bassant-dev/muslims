@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslims/screens/stories_screen/view/story_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import 'package:week4/core/SharedFunctions.dart';
-import 'package:week4/core/appcolors.dart';
-import 'package:week4/screens/stories_screen/view/progress_bar.dart';
-import 'package:week4/screens/stories_screen/view/story_screen.dart';
-import 'package:week4/screens/stories_screen/view_model/stories_cubit.dart';
 
+import '../../../core/SharedFunctions.dart';
+import '../view_model/stories_cubit.dart';
+import 'package:muslims/core/appcolors.dart';
 class StoriesScreen extends StatelessWidget {
   StoriesScreen({super.key});
 
@@ -20,7 +19,7 @@ class StoriesScreen extends StatelessWidget {
             color: Colors.black
         ),
         ),
-        backgroundColor: mainColor,
+        backgroundColor:AppColors.primaryColor,
       ),
       body: BlocConsumer<StoriesCubit, StoriesState>(
         listener: (context, state) {
@@ -40,7 +39,7 @@ class StoriesScreen extends StatelessWidget {
         builder: (context, state) {
           var storiescubit = StoriesCubit.get(context);
           return Container(
-            color: primarycolor,
+            color: AppColors.primarycolor,
             child:ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: storiescubit.randomstories.length,
@@ -52,10 +51,10 @@ class StoriesScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: CircleAvatar(
                       radius: 60.0,
-                      backgroundColor:storyItem.hasGreenBorder ? fourthcolor : Colors.black26,
+                      backgroundColor:storyItem.hasGreenBorder ? AppColors.fourthcolor : Colors.black26,
                       child: CircleAvatar(
                         radius: 55.0,
-                        backgroundColor: primarycolor,
+                        backgroundColor: AppColors.primarycolor,
                         child: CircleAvatar(
                           radius: 50.0,
                           backgroundImage: AssetImage(storyItem.imagePath),

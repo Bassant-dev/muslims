@@ -10,7 +10,10 @@ import 'package:muslims/screens/home_screen/view/start_screen.dart';
 import 'package:muslims/screens/home_screen/view_model/cubit/cubit.dart';
 import 'package:muslims/screens/quran/view%20model/quran_cubit.dart';
 import 'package:muslims/screens/salah_time/view%20model/time_cubit.dart';
+import 'package:muslims/screens/sebha/view_model/sebha_cubit.dart';
 import 'package:muslims/screens/splash_screen/splah_Screen.dart';
+import 'package:muslims/screens/stories_screen/view_model/stories_cubit.dart';
+import 'package:muslims/screens/stories_screen/view_model/story_cubit.dart';
 import 'core/bloc_observer.dart';
 
 void main() async{

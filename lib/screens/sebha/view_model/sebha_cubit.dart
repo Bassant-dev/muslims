@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:week4/core/appcolors.dart';
 
+import '../../../core/appcolors.dart';
 import '../../../core/cache_helper.dart';
 part 'sebha_state.dart';
+
 
 class SebhaCubit extends Cubit<SebhaState> {
   SebhaCubit() : super(SebhaInitial());
@@ -14,7 +14,7 @@ class SebhaCubit extends Cubit<SebhaState> {
   static SebhaCubit get(context) => BlocProvider.of(context);
   int? count ;
   int? sum ;
-  Color? selectedzekrcolor=fifthcolor;
+  Color? selectedzekrcolor=AppColors.fifthcolor;
   String?selectedzekr="الحمدللّه";
   int?selectedzekrindex=0;
   List<String> zekr=
@@ -26,12 +26,12 @@ class SebhaCubit extends Cubit<SebhaState> {
   ];
   List<Color> zekrcolor=
   [
-    fifthcolor,
-    sexthcolor,
-    seventhcolor,
-    eighthcolor,
-    ninthcolor,
-    tenthcolor
+    AppColors.fifthcolor,
+    AppColors.sexthcolor,
+    AppColors.seventhcolor,
+    AppColors.eighthcolor,
+    AppColors.ninthcolor,
+    AppColors.tenthcolor
   ];
   List<int> zekrcounter=
   [
