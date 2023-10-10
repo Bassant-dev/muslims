@@ -31,7 +31,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context)=> HomeCubit()),
         BlocProvider(create: (context)=>TimeCubit()..getLocation()),
         BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran()),
-         BlocProvider(create: (context)=>AzkarCubit())
+        BlocProvider(create: (context)=>AzkarCubit()),
+        BlocProvider(create: (context)=> SebhaCubit()..loadData()),
+        BlocProvider(create: (context)=> StoriesCubit()..getrandomlist()),
+        BlocProvider(create: (context)=> StoryCubit())
 
       ],
       child: ScreenUtilInit(
