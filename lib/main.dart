@@ -24,16 +24,11 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=> HomeCubit()),
-        BlocProvider(create: (context)
-        {
-          return TimeCubit()..getLocation();
-        },
-        ),
+        BlocProvider(create: (context)=>TimeCubit()..getPermission()..getCurrentLocation()),
         BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran())
       ],
       child: ScreenUtilInit(
@@ -41,6 +36,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Rafik Al Muslim',
           theme: ThemeData(
+
             colorScheme: ColorScheme.fromSeed(seedColor:HexColor("#6A9C89")),
             useMaterial3: true,
             bottomNavigationBarTheme:  BottomNavigationBarThemeData(
