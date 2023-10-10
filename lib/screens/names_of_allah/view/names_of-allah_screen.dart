@@ -13,7 +13,7 @@ class NamesOfAllahScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+//
       // backgroundColor: HexColor("#E4E4D0"),
       body: FutureBuilder<List<NamesAllahMODEL>>(
         future: readJsonData(),
