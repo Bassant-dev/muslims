@@ -1,8 +1,7 @@
-import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'package:location/location.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/dio.dart';
@@ -20,38 +19,90 @@ class TimeCubit extends Cubit<TimeState> {
     'المغرب',
     'العشاء',
   ];
-  bool ?isServiceEnabled;
-LocationPermission ?permission;
-  Future getPermission() async {
-    permission=await Geolocator.checkPermission();
-     isServiceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (isServiceEnabled==false|| permission==LocationPermission.denied )
+//   bool ?isServiceEnabled;
+// LocationPermission ?permission;
+//   Future getPermission() async {
+//     //permission=await Geolocator.checkPermission();
+//      isServiceEnabled = await Location.isLocationServiceEnabled();
+//     if (isServiceEnabled==false )
+//     {
+//       await Geolocator.requestPermission();
+//     }
+//
+//   }
+
+  Location location =  Location();
+
+  bool serviceEnabled=false;
+
+  PermissionStatus ?permissionGranted;
+  LocationData ?locationData;
+
+getLocation()async
+{
+  serviceEnabled = await location.serviceEnabled();
+  if(serviceEnabled)
     {
-      await Geolocator.requestPermission();
+      locationData = await location.getLocation();
+      getPrayerTime();
     }
-    else
+  if (serviceEnabled==false)
+  {
+    serviceEnabled = await location.requestService();
+    if(serviceEnabled)
       {
-        await Geolocator.requestPermission();
+        locationData=await location.getLocation();
+        getPrayerTime();
       }
   }
+  print(locationData?.latitude);
+  print(locationData?.longitude);
 
+  emit(GetCurrentLocationSuccess());
+}
+  getPrayerTime() async {
+    try {
+      DateTime date=DateTime.now();
+      Response response = await DioHelper.getData(
+          url:
+          '${date.day}-${date.month}-${date.year}?latitude=${locationData?.latitude}&longitude=${locationData?.longitude}');
+      salahTimeModel=SalahTimeModel.fromJson(response.data);
+      var data={
+        'Fajr':replaceNumbersToArabic(salahTimeModel!.data.timings.fajr),
+        'Dhuhr':replaceNumbersToArabic(salahTimeModel!.data.timings.dhuhr),
+        'Asr':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.asr)),
+        'Maghrib':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.maghrib)),
+        'Isha':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.isha))
+      };
+      data.entries.map((e) {
+        times.add(e.value);
+      }).toList();
+      emit(GetPrayerTimeSuccess());
 
-  double latUser=0.0;
-  double longUser=0.0;
- getCurrentLocation() async {
-     await Geolocator.getCurrentPosition().then((value)
+    } on Exception catch (e)
     {
-    latUser=value.latitude;
-     longUser=value.longitude;
-     print(latUser);
-     print(longUser);
-     getPrayerTime();
-      emit(GetCurrentLocationSuccess());
-    }).catchError((error) {
-      print(error.toString());
-      emit(GetCurrentLocationFailed());
-    });
+      print(e.toString());
+      emit(GetPrayerTimeFailed());
+    }
+
   }
+
+ //  double latUser=0.0;
+ //  double longUser=0.0;
+ // getCurrentLocation() async {
+ //     await Geolocator.getCurrentPosition().then((value)
+ //    {
+ //    latUser=value.latitude;
+ //     longUser=value.longitude;
+ //     print(latUser);
+ //     print(longUser);
+ //     getPrayerTime();
+ //      emit(GetCurrentLocationSuccess());
+ //    }).catchError((error) {
+ //      print(error.toString());
+ //      emit(GetCurrentLocationFailed());
+ //    });
+ //  }
   SalahTimeModel ?salahTimeModel;
   String convertTo12HourFormat(String timeString) {
     final inputFormat = DateFormat('HH:mm');
@@ -73,30 +124,4 @@ LocationPermission ?permission;
   }
 List<String>times= [];
   
-  getPrayerTime() async {
-    try {
-      DateTime date=DateTime.now();
-          Response response = await DioHelper.getData(
-              url:
-              '${date.day}-${date.month}-${date.year}?latitude=$latUser&longitude=$longUser');
-          salahTimeModel=SalahTimeModel.fromJson(response.data);
-         var data={
-            'Fajr':replaceNumbersToArabic(salahTimeModel!.data.timings.fajr),
-            'Dhuhr':replaceNumbersToArabic(salahTimeModel!.data.timings.dhuhr),
-            'Asr':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.asr)),
-            'Maghrib':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.maghrib)),
-            'Isha':replaceNumbersToArabic(convertTo12HourFormat(salahTimeModel!.data.timings.isha))
-          };
-         data.entries.map((e) {
-           times.add(e.value);
-         }).toList();
-          emit(GetPrayerTimeSuccess());
-
-    } on Exception catch (e) 
-    {
-      print(e.toString());
-      emit(GetPrayerTimeFailed());
-    }
-    
-  }
 }
