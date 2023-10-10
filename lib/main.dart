@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:muslims/core/dio.dart';
+import 'package:muslims/screens/Azkar/viewmodel/AzkarCubit/AzkarCubit.dart';
 import 'package:muslims/screens/home_screen/view/start_screen.dart';
 import 'package:muslims/screens/home_screen/view_model/cubit/cubit.dart';
 import 'package:muslims/screens/quran/view%20model/quran_cubit.dart';
 import 'package:muslims/screens/salah_time/view%20model/time_cubit.dart';
+import 'package:muslims/screens/splash_screen/splah_Screen.dart';
 import 'core/bloc_observer.dart';
 
 void main() async{
@@ -16,20 +18,21 @@ void main() async{
   Bloc.observer = MyBlocObserver();
   await DioHelper.init1();
   await DioHelper.init2();
+  await DioHelper.Init3();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=> HomeCubit()),
-        BlocProvider(create: (context)=>TimeCubit()..getPermission()..getCurrentLocation()),
-        BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran())
+        BlocProvider(create: (context)=>TimeCubit()..getLocation()),
+        BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran()),
+         BlocProvider(create: (context)=>AzkarCubit())
+
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
             ),
             textTheme: GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
           ),
-          home:startScreen(),
+          home:MyHomePage(),
         ),
       ),
     );

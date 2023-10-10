@@ -13,8 +13,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return BlocConsumer<HomeCubit, HomeStates>(
-      listener: (context, state) async {
-      },
+      listener: (context, state)
+      {},
       builder: (context, state)
       {
         return Scaffold();
