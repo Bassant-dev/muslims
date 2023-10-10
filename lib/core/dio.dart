@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 class DioHelper {
   static late Dio dio1;
   static late Dio dio2;
+  static late Dio dio3;
+
   static init1() {
     dio1 = Dio(BaseOptions(
       baseUrl: 'https://api.aladhan.com/v1/timings/',
@@ -14,6 +16,13 @@ class DioHelper {
     dio2 = Dio(BaseOptions(baseUrl: 'http://api.alquran.cloud/v1/',
     ));
   }
+  static Init3() {
+    dio3 = Dio(BaseOptions(
+      baseUrl: 'https://ahegazy.github.io/muslimKit/json/',
+      receiveDataWhenStatusError: true,
+    ));
+  }
+
 
   static Future<Response> getData(
       {
@@ -29,6 +38,9 @@ class DioHelper {
     };
     return await dio1.get(url, queryParameters: query);
   }
+
+
+
   static Future<Response> getData2(
       {
         required String url,
@@ -42,6 +54,20 @@ class DioHelper {
       'Accept': 'application/json',
     };
     return await dio2.get(url, queryParameters: query);
+  }
+  static Future<Response> getDataAzkar(
+      {
+        required String url,
+        Map<String, dynamic>? query,
+        String? token
+      }) async {
+
+    dio3.options.headers = {
+      'Authorization': "Bearer $token",
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+    return await dio3.get(url, queryParameters: query);
   }
   // Future<Response> getData({
   //   required String url,

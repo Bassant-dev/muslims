@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:muslims/core/dio.dart';
+import 'package:muslims/screens/Azkar/viewmodel/AzkarCubit/AzkarCubit.dart';
 import 'package:muslims/screens/home_screen/view/start_screen.dart';
 import 'package:muslims/screens/home_screen/view_model/cubit/cubit.dart';
 import 'package:muslims/screens/quran/view%20model/quran_cubit.dart';
@@ -16,6 +17,8 @@ void main() async{
   Bloc.observer = MyBlocObserver();
   await DioHelper.init1();
   await DioHelper.init2();
+  await DioHelper.Init3();
+
   runApp(const MyApp());
 }
 
@@ -29,7 +32,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context)=> HomeCubit()),
         BlocProvider(create: (context)=>TimeCubit()..getPermission()..getCurrentLocation()),
-        BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran())
+        BlocProvider(create: (context)=>QuranCubit()..getSurahOfQuran()),
+        BlocProvider(create: (context)=>  AzkarCubit()  ),
+
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
