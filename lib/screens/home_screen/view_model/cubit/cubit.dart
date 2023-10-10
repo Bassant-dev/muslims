@@ -51,7 +51,7 @@ class HomeCubit extends Cubit<HomeStates> {
       label: 'القبلة',
     ),
   ];
-
+//
   void changeBottomNavBar(int index) {
     currentIndex = index;
     emit(NewsBottomNavState());
