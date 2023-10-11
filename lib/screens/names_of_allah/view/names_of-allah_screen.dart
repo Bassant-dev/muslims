@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:muslims/screens/names_of_allah/model/names_allah_model.dart';
 
-import '../../qibla_screen/view/qibla_screen.dart';
-
 class NamesOfAllahScreen extends StatelessWidget {
   const NamesOfAllahScreen({Key? key}) : super(key: key);
 

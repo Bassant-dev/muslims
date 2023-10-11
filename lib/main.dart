@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:muslims/core/dio.dart';
 import 'package:muslims/screens/Azkar/viewmodel/AzkarCubit/AzkarCubit.dart';
+
 import 'package:muslims/screens/home_screen/view/start_screen.dart';
 import 'package:muslims/screens/home_screen/view_model/cubit/cubit.dart';
 import 'package:muslims/screens/quran/view%20model/quran_cubit.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
             ),
             textTheme: GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
           ),
-          home:MyHomePage(),
+          home: MyHomePage(),
         ),
       ),
     );

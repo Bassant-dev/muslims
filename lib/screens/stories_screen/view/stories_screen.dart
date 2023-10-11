@@ -13,14 +13,7 @@ class StoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("home",
-        style: TextStyle(
-            color: Colors.black
-        ),
-        ),
-        backgroundColor:AppColors.primaryColor,
-      ),
+
       body: BlocConsumer<StoriesCubit, StoriesState>(
         listener: (context, state) {
           if (state is StoryOpen && StoriesCubit.get(context).randomstories.isNotEmpty) {

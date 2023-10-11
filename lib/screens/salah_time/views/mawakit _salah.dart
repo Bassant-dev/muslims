@@ -16,6 +16,8 @@ class SalahTimeView extends StatelessWidget {
             padding:  EdgeInsets.all(10.0.r),
             child: Column(crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+
+                SizedBox(height: 20.h,),
                 Text('مواقيت الصلاه',
                   style: TextStyle(fontSize: 21.sp),textAlign: TextAlign.end,),
                 SizedBox(height: 20.h,),

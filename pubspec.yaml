@@ -53,9 +53,8 @@ dependencies:
   path_provider: ^2.1.1
   filesystem_picker: ^3.1.0
   percent_indicator: ^4.2.3
-
-
-
+  flutter_offline: ^3.0.0
+  fluttertoast: ^8.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "436509669490",
+    "project_id": "moslims-6c8ad",
+    "storage_bucket": "moslims-6c8ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436509669490:android:f48bd2a0b653f92fc7eaeb",
+        "android_client_info": {
+          "package_name": "com.example.muslims"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKIjeFM4jtCaHwj4bD-dd9vYNOWpk0iuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
