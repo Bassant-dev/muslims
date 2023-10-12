@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslims/screens/stories_screen/view/story_screen.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 
 import '../../../core/SharedFunctions.dart';
@@ -41,15 +41,15 @@ class StoriesScreen extends StatelessWidget {
                 StoriesCubit.get(context).storypath=storyItem.imagePath;
                 return InkWell(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.symmetric(horizontal: 10.0.w),
                     child: CircleAvatar(
-                      radius: 60.0,
+                      radius: 55.0.r,
                       backgroundColor:storyItem.hasGreenBorder ? AppColors.fourthcolor : Colors.black26,
                       child: CircleAvatar(
-                        radius: 55.0,
+                        radius: 50.0.r,
                         backgroundColor: AppColors.primarycolor,
                         child: CircleAvatar(
-                          radius: 50.0,
+                          radius: 45.0.r,
                           backgroundImage: AssetImage(storyItem.imagePath),
                         ),
                       ),

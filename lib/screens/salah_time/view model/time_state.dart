@@ -10,3 +10,4 @@ class CurrentLocationLoading extends TimeState {}
 class GetCurrentLocationFailed extends TimeState {}
 class GetPrayerTimeSuccess extends TimeState {}
 class GetPrayerTimeFailed extends TimeState {}
+class TimeLoading extends TimeState {}

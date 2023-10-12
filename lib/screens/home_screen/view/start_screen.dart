@@ -44,14 +44,14 @@ class startScreen extends StatelessWidget {
                 ) {
               if (connectivity == ConnectivityResult.none) {
 
-                return Center(
+                return const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircularProgressIndicator(),
                       SizedBox(height: 16),
                       Text(
-                        'Check Your Internet Connection!',
+                        'تأكد من وجود انترنت',
                         style: TextStyle(fontSize: 18),
                       ),
                     ],
@@ -62,7 +62,7 @@ class startScreen extends StatelessWidget {
                 return cubit.getCurrentScreen();
               }
             },
-            child: SizedBox(),
+            child: const SizedBox(),
           ),
         );
       },

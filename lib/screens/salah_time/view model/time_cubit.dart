@@ -40,6 +40,7 @@ class TimeCubit extends Cubit<TimeState> {
 
 getLocation()async
 {
+  emit(TimeLoading());
   serviceEnabled = await location.serviceEnabled();
   if(serviceEnabled)
     {

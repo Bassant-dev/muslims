@@ -6,7 +6,8 @@ class qiblaScreen extends StatelessWidget {
   const qiblaScreen({Key? key}) : super(key: key);
 //
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return SmoothCompass(
       height: double.infinity,
       width: double.infinity,

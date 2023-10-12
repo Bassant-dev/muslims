@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 2),
+      const Duration(seconds: 3),
           () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -23,6 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+
   }
 //#XFFAF6
   @override
