@@ -56,7 +56,7 @@ class HomeCubit extends Cubit<HomeStates> {
     currentIndex = index;
     emit(NewsBottomNavState());
   }
-  final homeScreen =const SalahTimeView();
+  final salah = SalahTimeView();
   final quranScreen = const QuranView();
   final azkarScreen = AzkarScreen();
   final namesOfAllah =  NamesOfAllahScreen();
@@ -66,7 +66,7 @@ class HomeCubit extends Cubit<HomeStates> {
   Widget getCurrentScreen() {
     switch (currentIndex) {
       case 0:
-        return homeScreen;
+        return  salah;
       case 1:
         return quranScreen;
       case 2:

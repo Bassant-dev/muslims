@@ -16,6 +16,7 @@ import 'package:muslims/screens/splash_screen/splah_Screen.dart';
 import 'package:muslims/screens/stories_screen/view_model/stories_cubit.dart';
 import 'package:muslims/screens/stories_screen/view_model/story_cubit.dart';
 import 'core/bloc_observer.dart';
+import 'core/cache_helper.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

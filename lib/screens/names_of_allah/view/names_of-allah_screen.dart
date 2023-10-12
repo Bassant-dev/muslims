@@ -60,8 +60,8 @@ class NamesAllahItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: HexColor("#FEFBE9"),
-      elevation: 3, // Add a shadow to the card
-      margin: EdgeInsets.all(8), // Add some margin around the card
+      elevation: 3,
+      margin: EdgeInsets.all(8),
       child: ListTile(
         title: Text(
           item.name.toString(),
@@ -69,7 +69,7 @@ class NamesAllahItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
-            color: Colors.black, // Set text color to black
+            color: Colors.black,
           ),
         ),
         onTap: () {
@@ -91,7 +91,7 @@ void _showMeaningDialog(BuildContext context, NamesAllahMODEL item) {
         title: Text(
           'معنى ${item.name}',
           textAlign: TextAlign.right,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -112,7 +112,7 @@ void _showMeaningDialog(BuildContext context, NamesAllahMODEL item) {
             child: Text(
               'إغلاق',
               style: TextStyle(
-                color: HexColor("#6A9C89"), // Set the text color to #94A684
+                color: HexColor("#6A9C89"),
                 fontWeight: FontWeight.bold,
               ),
             ),

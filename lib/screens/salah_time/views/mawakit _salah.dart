@@ -67,24 +67,24 @@ class SalahTimeView extends StatelessWidget {
               ),
               cubit.salahTimeModel?.data == null
                   ? state is TimeLoading ?
-          Center(
-          child: SizedBox(width: MediaQuery.of(context).size.width*0.65,
-          child: TextButton(
-          style: const ButtonStyle(
-          backgroundColor:
-          MaterialStatePropertyAll(Color(0xff6A9C89))),
-          onPressed: () {
-          cubit.getLocation();
-          },
-          child:
+              Center(
+                child: SizedBox(width: MediaQuery.of(context).size.width*0.65,
+                  child: TextButton(
+                    style: const ButtonStyle(
+                        backgroundColor:
+                        MaterialStatePropertyAll(Color(0xff6A9C89))),
+                    onPressed: () {
+                      cubit.getLocation();
+                    },
+                    child:
 
-          Center(
-          child: SizedBox(width: 24.w,height: 24.h,
-          child: const CircularProgressIndicator(color: Colors.white)),
-          ),
-          ),
-          ),
-          ):
+                    Center(
+                      child: SizedBox(width: 24.w,height: 24.h,
+                          child: const CircularProgressIndicator(color: Colors.white)),
+                    ),
+                  ),
+                ),
+              ):
               Center(
                 child: SizedBox(width: MediaQuery.of(context).size.width*0.65,
                   child: TextButton(
@@ -104,26 +104,26 @@ class SalahTimeView extends StatelessWidget {
                   ),
                 ),
               ):
-                       Expanded(
-                          child: ListView.builder(
-                              itemBuilder: (context, index) {
-                                return Card(
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 10.h, horizontal: 10.w),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(10.0.r),
-                                      child: Row(
-                                        children: [
-                                          Text(cubit.times[index]),
-                                          const Spacer(),
-                                          Text(cubit.salah[index]),
-                                        ],
-                                      ),
-                                    ));
-                              },
-                              itemCount: cubit.salah.length,
-                              physics: const BouncingScrollPhysics()),
-                        ),
+              Expanded(
+                child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return Card(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10.h, horizontal: 10.w),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0.r),
+                            child: Row(
+                              children: [
+                                Text(cubit.times[index]),
+                                const Spacer(),
+                                Text(cubit.salah[index]),
+                              ],
+                            ),
+                          ));
+                    },
+                    itemCount: cubit.salah.length,
+                    physics: const BouncingScrollPhysics()),
+              ),
             ],
           );
         },

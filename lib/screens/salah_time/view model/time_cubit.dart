@@ -38,29 +38,29 @@ class TimeCubit extends Cubit<TimeState> {
   PermissionStatus ?permissionGranted;
   LocationData ?locationData;
 
-getLocation()async
-{
-  emit(TimeLoading());
-  serviceEnabled = await location.serviceEnabled();
-  if(serviceEnabled)
+  getLocation()async
+  {
+    emit(TimeLoading());
+    serviceEnabled = await location.serviceEnabled();
+    if(serviceEnabled)
     {
       locationData = await location.getLocation();
       getPrayerTime();
     }
-  if (serviceEnabled==false)
-  {
-    serviceEnabled = await location.requestService();
-    if(serviceEnabled)
+    if (serviceEnabled==false)
+    {
+      serviceEnabled = await location.requestService();
+      if(serviceEnabled)
       {
         locationData=await location.getLocation();
         getPrayerTime();
       }
-  }
-  print(locationData?.latitude);
-  print(locationData?.longitude);
+    }
+    print(locationData?.latitude);
+    print(locationData?.longitude);
 
-  emit(GetCurrentLocationSuccess());
-}
+    emit(GetCurrentLocationSuccess());
+  }
   getPrayerTime() async {
     try {
       DateTime date=DateTime.now();
@@ -88,22 +88,22 @@ getLocation()async
 
   }
 
- //  double latUser=0.0;
- //  double longUser=0.0;
- // getCurrentLocation() async {
- //     await Geolocator.getCurrentPosition().then((value)
- //    {
- //    latUser=value.latitude;
- //     longUser=value.longitude;
- //     print(latUser);
- //     print(longUser);
- //     getPrayerTime();
- //      emit(GetCurrentLocationSuccess());
- //    }).catchError((error) {
- //      print(error.toString());
- //      emit(GetCurrentLocationFailed());
- //    });
- //  }
+  //  double latUser=0.0;
+  //  double longUser=0.0;
+  // getCurrentLocation() async {
+  //     await Geolocator.getCurrentPosition().then((value)
+  //    {
+  //    latUser=value.latitude;
+  //     longUser=value.longitude;
+  //     print(latUser);
+  //     print(longUser);
+  //     getPrayerTime();
+  //      emit(GetCurrentLocationSuccess());
+  //    }).catchError((error) {
+  //      print(error.toString());
+  //      emit(GetCurrentLocationFailed());
+  //    });
+  //  }
   SalahTimeModel ?salahTimeModel;
   String convertTo12HourFormat(String timeString) {
     final inputFormat = DateFormat('HH:mm');
@@ -123,6 +123,6 @@ getLocation()async
     }
     return input;
   }
-List<String>times= [];
-  
+  List<String>times= [];
+
 }
