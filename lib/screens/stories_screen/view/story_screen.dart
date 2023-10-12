@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:muslims/screens/stories_screen/view/progress_bar.dart';
+import 'package:muslims/screens/stories_screen/view/stories_screen.dart';
+import 'package:muslims/screens/thehome.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -14,16 +16,24 @@ class StoryScreen extends StatelessWidget {
   String? img;
   double progress = 0.0;
   late Timer timer;
+  bool? pause =false;
   BuildContext? parentContext;
   StoryScreen(String img,BuildContext context)
   {
     this.img=img;
     this.parentContext=context;
     // Start the timer when the screen is created
-    timer = Timer.periodic(Duration(milliseconds: 50), (Timer t) {
+    timer = Timer.periodic(Duration(milliseconds: 30), (Timer t) {
       if (progress <= 0.99) {
         // Increase the progress until it reaches 1.0
-        progress += 0.01;
+        if(pause==true)
+        {
+          progress+=0.0;
+        }
+        else
+        {
+          progress += 0.01;
+        }
       } else {
         // Cancel the timer when progress reaches 1
         progress=1.0;
@@ -37,11 +47,9 @@ class StoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Navigate back to StoriesScreen after a delays
-
-
     return Scaffold(
       backgroundColor: Colors.black,
-      body: InkWell(
+      body: GestureDetector(
         child: Stack(
             children:[
               Center(
@@ -71,6 +79,7 @@ class StoryScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
+                    pause=true;
                     //share image with social media
                     final bytes = await rootBundle.load(img!);
                     final list = bytes.buffer.asUint8List();
@@ -82,10 +91,9 @@ class StoryScreen extends StatelessWidget {
                   },
                 ),
               ),
-
               StreamBuilder<double>(
                 initialData: progress,
-                stream: Stream.periodic(Duration(milliseconds: 50), (_) => progress),
+                stream: Stream.periodic(Duration(milliseconds: 30), (_) => progress),
                 builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
                   return Padding(
                     padding: const EdgeInsets.only(top: 30.0),
@@ -94,16 +102,23 @@ class StoryScreen extends StatelessWidget {
                     ),
                   );
                 },
-              )
+              ),
             ]
         ),
         onTap: ()
         {
-          //If tapped a long tap stay
-          navback(context);
+
+          pause=false;
+          //navback(context);
         },
+        onDoubleTap: ()
+        {
+          pause=true;
+          //navback(context);
+        },
+
+
       ),
     );
   }
 }
-

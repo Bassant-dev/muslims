@@ -20,13 +20,22 @@ class StoriesCubit extends Cubit<StoriesState> {
   static StoriesCubit get(context)=>BlocProvider.of(context);
 
   List<StoryItem> assetPaths = [
-    StoryItem(imagePath: 'assets/img/book2.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book3.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book4.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book5.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book6.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book7.jpg', hasGreenBorder: true),
-    StoryItem(imagePath: 'assets/img/book8.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st1.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st2.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st3.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st4.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st5.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st6.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st7.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st8.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st9.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st10.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st11.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st12.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st13.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st14.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st15.jpg', hasGreenBorder: true),
+    StoryItem(imagePath: 'assets/st16.jpg', hasGreenBorder: true),
     // Add more asset paths as needed
   ];
   List<StoryItem> randomstories=[];

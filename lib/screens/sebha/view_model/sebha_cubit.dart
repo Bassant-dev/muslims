@@ -7,7 +7,6 @@ import '../../../core/appcolors.dart';
 import '../../../core/cache_helper.dart';
 part 'sebha_state.dart';
 
-
 class SebhaCubit extends Cubit<SebhaState> {
   SebhaCubit() : super(SebhaInitial());
 
@@ -57,11 +56,6 @@ class SebhaCubit extends Cubit<SebhaState> {
     sum=sum!+ 1;
     emit(SebhaIncrementSuccess());
     zekrcounter[indexzekr]=count!;
-    print("selected zekr index in increment:  $indexzekr");
-    print("selected zekr count in increment: ${zekrcounter[indexzekr]}");
-
-    print("counter in cubit $count");
-    print("sum in cubit $sum");
     CacheHelper.saveData(key: 'counter', value: count);
     CacheHelper.saveData(key: 'sum', value: sum);
   }
@@ -71,9 +65,6 @@ class SebhaCubit extends Cubit<SebhaState> {
     count = 0;
     zekrcounter[zekrindexx]=count!;
     emit(SebhaResetCounterSuccess());
-    print("counter in cubit $count");
-    print("sum in cubit after reset count:  $sum");
-    print("selected zekr index in cubit after reset count:  $zekrindexx");
     CacheHelper.saveData(key: 'counter', value: count);
     CacheHelper.saveData(key: 'sum', value: sum);
   }
@@ -86,27 +77,21 @@ class SebhaCubit extends Cubit<SebhaState> {
     for (int i = 0; i < zekrcounter.length; i++) {
       zekrcounter[i] = 0;
     }
-    print("after tasfeer is: ${zekrcounter}");
     zekrcounter[zekrindexx]=count!;
-    print("counter in cubit $count");
     CacheHelper.saveData(key: 'counter', value: count);
     CacheHelper.saveData(key: 'sum', value: sum);
   }
 
   String displayzekr(int zekrindex)
   {
-   // print(zekr[1]);
     return zekr[zekrindex];
   }
   void displayzekrcolor(int zekrindex)
   {
-    print("changed to: $selectedzekrcolor");
     emit(Sebhachangezekrcolor());
     selectedzekrcolor=zekrcolor[zekrindex];
     selectedzekr=zekr[zekrindex];
     selectedzekrindex=zekrindex;
-    print("selected zekr is : $selectedzekr");
-    print("after changed to: $selectedzekrcolor");
-    print("selected zekr index in color is :  $zekrindex");
+
   }
 }
