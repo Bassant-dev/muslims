@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:workmanager/workmanager.dart';
@@ -32,51 +32,29 @@ class StaticDo3a2 {
   ];
 }
 
-FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
 
-Future showNotification() async
+@pragma('vm:entry-point')
+void callbackDispatcher()async
 {
-  int rndmIndex = Random().nextInt(StaticDo3a2().smallDo3a2.length - 1);
-  AndroidNotificationDetails androidPlatformChannelSpecifics =
-  AndroidNotificationDetails(
-    '$rndmIndex',
-    'تطبيق المسلم',
-    importance: Importance.max,
-    priority: Priority.high,
-    playSound: true,
-    enableVibration: true,
-  );
-  var platformChannelSpecifics = NotificationDetails(
-    android: androidPlatformChannelSpecifics,
-  );
-  await flutterLocalNotificationsPlugin?.show(
-      rndmIndex,
-      'رفيق المسلم',
-      StaticDo3a2().smallDo3a2[rndmIndex],
-      platformChannelSpecifics
 
-  );
-}
-
-void callbackDispatcher()
-{
-  // initial notifications
-  var initializationSettingsAndroid =
-  const AndroidInitializationSettings('@mipmap/ic_launcher');
-  var initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
-
-  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  WidgetsFlutterBinding.ensureInitialized();
-  flutterLocalNotificationsPlugin?.initialize(initializationSettings);
   Workmanager().executeTask((task, inputData)
   {
-    showNotification();
+    notify();
     return Future.value(true);
   });
 }
-
+notify()
+{
+  int rndmIndex = Random().nextInt(StaticDo3a2().smallDo3a2.length - 1);
+  AwesomeNotifications().createNotification(
+      content:
+      NotificationContent(
+          id: 1,displayOnBackground: true,
+          channelKey: 'basic_channel',title: '',body:
+      StaticDo3a2().smallDo3a2[rndmIndex]));
+  print('success');
+  print(rndmIndex);
+}
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -95,7 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-    Workmanager().initialize(callbackDispatcher,isInDebugMode: true);
+
+    Workmanager().initialize(callbackDispatcher,isInDebugMode: false);
   }
 
 //#XFFAF6
